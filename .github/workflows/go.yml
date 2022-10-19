@@ -13,12 +13,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install golint
+      run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.50.0
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
     - name: Linter
-      run: golint ./...
+      run: golangci-lint run ./...
 
     - name: Build
       run: go build -v ./...
