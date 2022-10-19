@@ -1,3 +1,14 @@
 # sipdig
 Sip Digest Calculator
-./sipnoncecalc -u USER -p PASS -r REALM -n NONCE -m REGISTER (default REGISTER)
+
+```
+-u - username
+-p - password
+-r - realm
+-n - nonce (response from SIP server)
+-m - sip-method (default REGISTER)
+```
+## Example:
+```
+./sipdig -u USER -p PASS -r REALM -n NONCE -m REGISTER (default REGISTER)
+```
