@@ -21,6 +21,12 @@ var method = flag.String("m", "REGISTER", "sip method")
 func main() {
 	flag.Parse()
 
+	response := calculdateDigets()
+	fmt.Println(response)
+}
+
+func calculdateDigets() string {
+
 	var HA1 string
 	var HA2 string
 	var response string
@@ -29,5 +35,5 @@ func main() {
 	HA2 = MD5Hash(fmt.Sprintf("%s:sip:%s", *method, *realm))
 
 	response = MD5Hash(fmt.Sprintf("%s:%s:%s", HA1, *nonce, HA2))
-	fmt.Println(response)
+	return response
 }
