@@ -35,7 +35,7 @@ func main() {
 		})
 	}
 
-	response := calculdateDigets()
+	response := calculateDigets()
 
 	if len(checkResponse) > 0 && checkResponse == response {
 		fmt.Println("Responcse is valid")
@@ -46,7 +46,7 @@ func main() {
 	fmt.Println(response)
 }
 
-func calculdateDigets() string {
+func calculateDigets() string {
 
 	var HA1 string
 	var HA2 string
