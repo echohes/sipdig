@@ -25,8 +25,6 @@ var checkResponse string
 func main() {
 	flag.Parse()
 
-	var checkResponse string
-
 	if len(*checkString) > 0 && len(*password) > 0 {
 		parseDigestResponce(*checkString)
 	} else {
