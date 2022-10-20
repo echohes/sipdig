@@ -39,6 +39,8 @@ func main() {
 
 	if len(checkResponse) > 0 && checkResponse == response {
 		fmt.Println("Responcse is valid")
+	} else {
+		fmt.Println("Responcse is invalid")		
 	}
 
 	fmt.Println(response)
