@@ -1,5 +1,5 @@
 # sipdig
-Sip Digest Calculator
+Tool for Sip Digest Calculate/Validate
 
 ```
 -u - username
