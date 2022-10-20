@@ -13,6 +13,7 @@ func MD5Hash(text string) string {
 }
 
 var realm = flag.String("r", "", "sip realm")
+var uri = flag.String("ur", "", "sip uri")
 var user = flag.String("u", "", "user")
 var password = flag.String("p", "", "password")
 var nonce = flag.String("n", "", "nonce")
@@ -32,7 +33,7 @@ func calculdateDigets() string {
 	var response string
 
 	HA1 = MD5Hash(fmt.Sprintf("%s:%s:%s", *user, *realm, *password))
-	HA2 = MD5Hash(fmt.Sprintf("%s:sip:%s", *method, *realm))
+	HA2 = MD5Hash(fmt.Sprintf("%s:sip:%s", *method, *uri))
 
 	response = MD5Hash(fmt.Sprintf("%s:%s:%s", HA1, *nonce, HA2))
 	return response

@@ -10,6 +10,7 @@ func Test_Hash_OK(t *testing.T) {
 	*password = "iCc2W5DsX4"
 	*realm = "127.0.0.1"
 	*nonce = "Y0/V82NP1MegreIpiGEe1pbqYHqFdons"
+    *uri = "127.0.0.1"
 
 	response := calculdateDigets()
 
