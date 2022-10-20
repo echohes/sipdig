@@ -20,7 +20,7 @@ Sip Digest Calculator
 ```
 Contact: <sip:Q-_HE72tib@127.0.0.1:5087;transport=udp>;expires=3600"
 User-Agent: Linphone Desktop/ (Ubuntu 22.04.1 LTS, Qt 5.15.3) LinphoneCore/4.4.21
-Proxy-Authorization:  Digest realm="195.246.111.155", nonce="Y1D5w2NQ+Jfd3lJixhK5CmoAy38b/VRs", username="Q-_HE72tib",  uri="sip:121@195.246.111.155", response="a898a67660c4aa99f384072b31b16f3a"
+Proxy-Authorization:  Digest realm="127.0.0.1", nonce="Y1D5w2NQ+Jfd3lJixhK5CmoAy38b/VRs", username="Q-_HE72tib",  uri="sip:121@127.0.0.1", response="a898a67660c4aa99f384072b31b16f3a"
 ```
 
 ## Additionally, enter your password and check:
