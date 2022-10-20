@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
+	"strings"
 )
 
 func MD5Hash(text string) string {
@@ -18,17 +19,30 @@ var user = flag.String("u", "", "user")
 var password = flag.String("p", "", "password")
 var nonce = flag.String("n", "", "nonce")
 var method = flag.String("m", "REGISTER", "sip method")
+var checkString = flag.String("check", "", "validate your response Digest")
+var checkResponse string
 
 func main() {
 	flag.Parse()
 
-	flag.VisitAll(func(f *flag.Flag) {
-		if f.Value.String() == "" {
-			fmt.Println(f.Name, "empty")
-		}
-	})
+	var checkResponse string
+
+	if len(*checkString) > 0 && len(*password) > 0 {
+		parseDigestResponce(*checkString)
+	} else {
+		flag.VisitAll(func(f *flag.Flag) {
+			if f.Value.String() == "" && f.Name != "check" {
+				fmt.Println(f.Name, "empty")
+			}
+		})
+	}
 
 	response := calculdateDigets()
+
+	if len(checkResponse) > 0 && checkResponse == response {
+		fmt.Println("Responcse is valid")
+	}
+
 	fmt.Println(response)
 }
 
@@ -43,4 +57,26 @@ func calculdateDigets() string {
 
 	response = MD5Hash(fmt.Sprintf("%s:%s:%s", HA1, *nonce, HA2))
 	return response
+}
+
+func parseDigestResponce(string) {
+
+	removeSpace := strings.ReplaceAll(*checkString, " ", "")
+	removeQutos := strings.ReplaceAll(removeSpace, "\"", "")
+	splitParams := strings.Split(removeQutos, ",")
+
+	for _, v := range splitParams {
+		switch params := strings.Split(v, "="); params[0] {
+		case "nonce":
+			*nonce = params[1]
+		case "realm":
+			*realm = params[1]
+		case "uri":
+			*uri = params[1]
+		case "username":
+			*user = params[1]
+		case "response":
+			checkResponse = params[1]
+		}
+	}
 }
