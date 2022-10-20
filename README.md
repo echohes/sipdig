@@ -15,7 +15,7 @@ Sip Digest Calculator
 ./sipdig -u USER -p PASS -r REALM -ur URI -n NONCE -m REGISTER
 ```
 
-## Validate your response from sip dump, copy string from Proxy-Authorization, all data after Digest:
+## Validate your response from sip dump, copy string from Proxy-Authorization (Authorization), all data after Digest:
 
 ```
 Contact: <sip:Q-_HE72tib@127.0.0.1:5087;transport=udp>;expires=3600"
