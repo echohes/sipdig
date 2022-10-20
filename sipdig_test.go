@@ -10,7 +10,7 @@ func Test_Hash_OK(t *testing.T) {
 	*password = "iCc2W5DsX4"
 	*realm = "127.0.0.1"
 	*nonce = "Y0/V82NP1MegreIpiGEe1pbqYHqFdons"
-    *uri = "127.0.0.1"
+	*uri = "sip:127.0.0.1"
 
 	response := calculdateDigets()
 
@@ -23,7 +23,7 @@ func Test_Hash_Not(t *testing.T) {
 	//values
 	*user = "HE72tib"
 	*password = "iCc2W5DsX4"
-	*realm = "127.0.0.1"
+	*realm = "sip:127.0.0.1"
 	*nonce = "Y0/V82NP1MegreIpiGEe1pbqYHqFdons"
 
 	response := calculdateDigets()
