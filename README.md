@@ -5,6 +5,7 @@ Sip Digest Calculator
 -u - username
 -p - password
 -r - realm
+-ur - URI
 -n - nonce (response from SIP server)
 -m - sip-method (default REGISTER)
 ```
