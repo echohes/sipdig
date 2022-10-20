@@ -19,7 +19,7 @@ var user = flag.String("u", "", "user")
 var password = flag.String("p", "", "password")
 var nonce = flag.String("n", "", "nonce")
 var method = flag.String("m", "REGISTER", "sip method")
-var checkString = flag.String("check", "", "validate your response Digest")
+var checkString = flag.String("d", "", "validate your response Digest")
 var checkResponse string
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 		parseDigestResponce(*checkString)
 	} else {
 		flag.VisitAll(func(f *flag.Flag) {
-			if f.Value.String() == "" && f.Name != "check" {
+			if f.Value.String() == "" && f.Name != "d" {
 				fmt.Println(f.Name, "empty")
 			}
 		})
@@ -40,7 +40,7 @@ func main() {
 	if len(checkResponse) > 0 && checkResponse == response {
 		fmt.Println("Responcse is valid")
 	} else {
-		fmt.Println("Responcse is invalid")		
+		fmt.Println("Responcse is invalid")
 	}
 
 	fmt.Println(response)

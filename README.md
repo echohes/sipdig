@@ -8,7 +8,7 @@ Sip Digest Calculator
 -r - realm (example: asterisk or some URI)
 -n - nonce (response from SIP server)
 -m - sip-method (default REGISTER)
--check - check your current string for valid, work with -p 
+-d - check your current Digest response for valid, work with -p 
 ```
 ## Example:
 ```
@@ -26,7 +26,7 @@ Proxy-Authorization:  Digest realm="127.0.0.1", nonce="Y1D5w2NQ+Jfd3lJixhK5CmoAy
 ## Additionally, enter your password and check:
 
 ```
-./sipdig -m INVITE -p iCc2W5DsX4 -check 'realm="127.0.0.1", nonce="Y1D5w2NQ+Jfd3lJixhK5CmoAy38b/VRs", username="Q-_HE72tib", uri="sip:121@127.0.0.1", response="66c17f995f15d80581f86d634076cf7f"'
+./sipdig -m INVITE -p iCc2W5DsX4 -d 'realm="127.0.0.1", nonce="Y1D5w2NQ+Jfd3lJixhK5CmoAy38b/VRs", username="Q-_HE72tib", uri="sip:121@127.0.0.1", response="66c17f995f15d80581f86d634076cf7f"'
 
 Responcse is valid
 66c17f995f15d80581f86d634076cf7f
