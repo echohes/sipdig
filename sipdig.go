@@ -18,6 +18,9 @@ var uri = flag.String("ur", "", "sip uri, example: sip:127.0.0.1:5060")
 var user = flag.String("u", "", "user")
 var password = flag.String("p", "", "password")
 var nonce = flag.String("n", "", "nonce")
+var cnonce = flag.String("cn", "", "cnonce")
+var nonceCount = flag.String("nc", "", "nonceCount")
+var qop = flag.String("qp", "", "qop")
 var method = flag.String("m", "REGISTER", "sip method")
 var checkString = flag.String("d", "", "validate your response Digest")
 var checkResponse string
@@ -55,7 +58,13 @@ func calculateDigets() string {
 	HA1 = MD5Hash(fmt.Sprintf("%s:%s:%s", *user, *realm, *password))
 	HA2 = MD5Hash(fmt.Sprintf("%s:%s", *method, *uri))
 
-	response = MD5Hash(fmt.Sprintf("%s:%s:%s", HA1, *nonce, HA2))
+	if len(*qop) == 0 {
+		//response = MD5(HA1:nonce:HA2)
+		response = MD5Hash(fmt.Sprintf("%s:%s:%s", HA1, *nonce, HA2))
+	else {
+		//response = MD5(HA1:nonce:nonceCount:cnonce:qop:HA2)
+		response = MD5Hash(fmt.Sprintf("%s:%s:%s:%s:%s:%s", HA1, *nonce, *nonceCount, *cnonce, *qop, HA2))
+	}
 	return response
 }
 
@@ -77,6 +86,12 @@ func parseDigestResponce(string) {
 			*user = params[1]
 		case "response":
 			checkResponse = params[1]
+		case "cnonce":
+			*cnonce = params[1]
+		case "nc":
+			*nonceCount = params[1]
+		case "qop":
+			*qop = params[1]			
 		}
 	}
 }
