@@ -58,3 +58,19 @@ func Test_Hash_REGISTER_Response_OK(t *testing.T) {
 		t.Error("Incorrect hash")
 	}
 }
+
+func Test_Hash_GET_and_QOP_Response_OK(t *testing.T) {
+	//values
+	*checkString = `username="Mufasa",realm="testrealm@host.com",nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",uri="/dir/index.html",qop=auth,nc=00000001,cnonce="0a4f113b",response="6629fae49393a05397450978507c4ef1",opaque="5ccc069c403ebaf9f0171e9517f40e41"`
+	*password = "Circle Of Life"
+	*method = "GET"
+	parseDigestResponce(*checkString)
+	response := calculateDigets()
+
+	if response != "6629fae49393a05397450978507c4ef1" {
+		t.Error("Incorrect hash")
+	}
+}
+
+
+
