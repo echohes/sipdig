@@ -8,6 +8,9 @@ Tool for Sip Digest Calculate/Validate
 -r - realm (example: asterisk or some URI)
 -n - nonce (response from SIP server)
 -m - sip-method (default REGISTER)
+-cn - cnonce (client nonce)
+-nc - nonce_count (generate from client)
+-qp - qop ("auth", "auth-in")
 -d - check your current Digest response for valid, work with -p 
 ```
 ## Example:
