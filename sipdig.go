@@ -61,7 +61,7 @@ func calculateDigets() string {
 	if len(*qop) == 0 {
 		//response = MD5(HA1:nonce:HA2)
 		response = MD5Hash(fmt.Sprintf("%s:%s:%s", HA1, *nonce, HA2))
-	else {
+	} else {
 		//response = MD5(HA1:nonce:nonceCount:cnonce:qop:HA2)
 		response = MD5Hash(fmt.Sprintf("%s:%s:%s:%s:%s:%s", HA1, *nonce, *nonceCount, *cnonce, *qop, HA2))
 	}
